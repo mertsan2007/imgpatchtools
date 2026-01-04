@@ -2,9 +2,10 @@
 Patch image (.img) using sparse Android data image (.dat) in OTA zip with "BlockImageUpdate"
 Patch other files (boot.img, firmwares) using patch file (.p) with "ApplyPatchfn"
 
+Maybe useful for getting raw imgs from leaked samsung oneui incremental ota files💩💩💩💩
 
 ## Downloads
-[Github Release](https://github.com/erfanoabdi/imgpatchtools/releases)
+[Github Release](https://github.com/mertsan2007/imgpatchtools/releases)
 
 
 ## Requirements
@@ -14,18 +15,26 @@ For Building this tool you need :
 * libbz2
 * openssl
 
-It currently supports Linux x86/x64 & MacOS, Not tested on Windows.
+Ubuntu:
+```
+sudo apt install -y make g++ zlib1g zlib1g-dev libbz2-dev libssl-dev
+```
 
+Alpine:
+```
+sudo apk add make g++ zlib zlib-dev libbz2 openssl-dev bsd-compat-headers
+```
+It currently supports Linux x86/x64 and ARM64(maybe)
 
 ## Usage
 ```
-usage: ./BlockImageUpdate <system.img> <system.transfer.list> <system.new.dat> <system.patch.dat>
+usage: ./BlockImageUpdate <x.img> <x.transfer.list> <x.new.dat> <x.patch.dat>
 ```
 args:
-- `<system.img>` = block device (or file) to modify in-place
-- `<system.transfer.list>` = transfer list (blob) from OTA/rom zip
-- `<system.new.dat>` = new data stream from OTA/rom zip
-- `<system.patch.dat>` = patch stream from OTA/rom zip
+- `<x.img>` = block device (or file) to modify in-place
+- `<x.transfer.list>` = transfer list (blob) from OTA/rom zip
+- `<x.new.dat>` = new data stream from OTA/rom zip
+- `<x.patch.dat>` = patch stream from OTA/rom zip
 
 ```
 ./ApplyPatchfn <file> <target> <tgt_sha1> <size> <init_sha1(1)> <patch(1)> [init_sha1(2)] [patch(2)]...
